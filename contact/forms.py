@@ -1,33 +1,41 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from contact.models import Contact
+from contact.models import Contact  # type: ignore
 
 
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
+    picture = forms.ImageField(
+        widget=forms.FileInput(
             attrs={
-                'class': 'classe-a classe-b',
-                'placeholder': 'Aqui veio do forms',
+                'accept': 'image/*'
             }
-        ),
-        label='Primeiro Nome',
-        help_text='Texto de ajuda para seu usuário',
+        )
     )
+    # first_name = forms.CharField(
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             'class': 'classe-a classe-b',
+    #             'placeholder': 'Aqui veio do forms',
+    #         }
+    #     ),
+    #     label='Primeiro Nome',
+    #     help_text='Texto de ajuda para seu usuário',
+    # )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
 
-        # self.fields['first_name'].widget.attrs.update({
-        #     'class': 'classe-a classe-b',
-        #     'placeholder': 'Aqui veio do init',
-        # })
+    #     # self.fields['first_name'].widget.attrs.update({
+    #     #     'class': 'classe-a classe-b',
+    #     #     'placeholder': 'Aqui veio do init',
+    #     # })
 
     class Meta:
         model = Contact
         fields = (
             'first_name', 'last_name', 'phone',
             'email', 'description', 'category',
+            'picture'
         )
         # widgets = {
         #     'first_name': forms.TextInput(
