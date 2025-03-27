@@ -8,6 +8,11 @@ db.sqlite3
 media/
 static/
 project/local_settings.py
+SERVER.md
+gunicorn copy.txt
+gunicorn.txt
+nginx-http copy.txt
+nginx-http.txt
 
 # Backup files #
 *.bak
